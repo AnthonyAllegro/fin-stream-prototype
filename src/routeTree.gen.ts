@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as DesbloquearRouteImport } from './routes/desbloquear'
+import { Route as HoleritesRouteImport } from './routes/holerites'
+import { Route as LogsRouteImport } from './routes/logs'
+import { Route as MesclarRouteImport } from './routes/mesclar'
+import { Route as OrganizarPaginasRouteImport } from './routes/organizar-paginas'
+import { Route as RemoverPrefixosRouteImport } from './routes/remover-prefixos'
+import { Route as RenomearPorValorRouteImport } from './routes/renomear-por-valor'
+import { Route as SequenciadorRouteImport } from './routes/sequenciador'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesbloquearRoute = DesbloquearRouteImport.update({
+  id: '/desbloquear',
+  path: '/desbloquear',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoleritesRoute = HoleritesRouteImport.update({
+  id: '/holerites',
+  path: '/holerites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogsRoute = LogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MesclarRoute = MesclarRouteImport.update({
+  id: '/mesclar',
+  path: '/mesclar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrganizarPaginasRoute = OrganizarPaginasRouteImport.update({
+  id: '/organizar-paginas',
+  path: '/organizar-paginas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemoverPrefixosRoute = RemoverPrefixosRouteImport.update({
+  id: '/remover-prefixos',
+  path: '/remover-prefixos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RenomearPorValorRoute = RenomearPorValorRouteImport.update({
+  id: '/renomear-por-valor',
+  path: '/renomear-por-valor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SequenciadorRoute = SequenciadorRouteImport.update({
+  id: '/sequenciador',
+  path: '/sequenciador',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/desbloquear': typeof DesbloquearRoute
+  '/holerites': typeof HoleritesRoute
+  '/logs': typeof LogsRoute
+  '/mesclar': typeof MesclarRoute
+  '/organizar-paginas': typeof OrganizarPaginasRoute
+  '/remover-prefixos': typeof RemoverPrefixosRoute
+  '/renomear-por-valor': typeof RenomearPorValorRoute
+  '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/desbloquear': typeof DesbloquearRoute
+  '/holerites': typeof HoleritesRoute
+  '/logs': typeof LogsRoute
+  '/mesclar': typeof MesclarRoute
+  '/organizar-paginas': typeof OrganizarPaginasRoute
+  '/remover-prefixos': typeof RemoverPrefixosRoute
+  '/renomear-por-valor': typeof RenomearPorValorRoute
+  '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/desbloquear': typeof DesbloquearRoute
+  '/holerites': typeof HoleritesRoute
+  '/logs': typeof LogsRoute
+  '/mesclar': typeof MesclarRoute
+  '/organizar-paginas': typeof OrganizarPaginasRoute
+  '/remover-prefixos': typeof RemoverPrefixosRoute
+  '/renomear-por-valor': typeof RenomearPorValorRoute
+  '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/configuracoes'
+    | '/desbloquear'
+    | '/holerites'
+    | '/logs'
+    | '/mesclar'
+    | '/organizar-paginas'
+    | '/remover-prefixos'
+    | '/renomear-por-valor'
+    | '/sequenciador'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/configuracoes'
+    | '/desbloquear'
+    | '/holerites'
+    | '/logs'
+    | '/mesclar'
+    | '/organizar-paginas'
+    | '/remover-prefixos'
+    | '/renomear-por-valor'
+    | '/sequenciador'
+  id:
+    | '__root__'
+    | '/'
+    | '/configuracoes'
+    | '/desbloquear'
+    | '/holerites'
+    | '/logs'
+    | '/mesclar'
+    | '/organizar-paginas'
+    | '/remover-prefixos'
+    | '/renomear-por-valor'
+    | '/sequenciador'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  DesbloquearRoute: typeof DesbloquearRoute
+  HoleritesRoute: typeof HoleritesRoute
+  LogsRoute: typeof LogsRoute
+  MesclarRoute: typeof MesclarRoute
+  OrganizarPaginasRoute: typeof OrganizarPaginasRoute
+  RemoverPrefixosRoute: typeof RemoverPrefixosRoute
+  RenomearPorValorRoute: typeof RenomearPorValorRoute
+  SequenciadorRoute: typeof SequenciadorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/desbloquear': {
+      id: '/desbloquear'
+      path: '/desbloquear'
+      fullPath: '/desbloquear'
+      preLoaderRoute: typeof DesbloquearRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/holerites': {
+      id: '/holerites'
+      path: '/holerites'
+      fullPath: '/holerites'
+      preLoaderRoute: typeof HoleritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logs': {
+      id: '/logs'
+      path: '/logs'
+      fullPath: '/logs'
+      preLoaderRoute: typeof LogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mesclar': {
+      id: '/mesclar'
+      path: '/mesclar'
+      fullPath: '/mesclar'
+      preLoaderRoute: typeof MesclarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/organizar-paginas': {
+      id: '/organizar-paginas'
+      path: '/organizar-paginas'
+      fullPath: '/organizar-paginas'
+      preLoaderRoute: typeof OrganizarPaginasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/remover-prefixos': {
+      id: '/remover-prefixos'
+      path: '/remover-prefixos'
+      fullPath: '/remover-prefixos'
+      preLoaderRoute: typeof RemoverPrefixosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renomear-por-valor': {
+      id: '/renomear-por-valor'
+      path: '/renomear-por-valor'
+      fullPath: '/renomear-por-valor'
+      preLoaderRoute: typeof RenomearPorValorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sequenciador': {
+      id: '/sequenciador'
+      path: '/sequenciador'
+      fullPath: '/sequenciador'
+      preLoaderRoute: typeof SequenciadorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  DesbloquearRoute: DesbloquearRoute,
+  HoleritesRoute: HoleritesRoute,
+  LogsRoute: LogsRoute,
+  MesclarRoute: MesclarRoute,
+  OrganizarPaginasRoute: OrganizarPaginasRoute,
+  RemoverPrefixosRoute: RemoverPrefixosRoute,
+  RenomearPorValorRoute: RenomearPorValorRoute,
+  SequenciadorRoute: SequenciadorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
