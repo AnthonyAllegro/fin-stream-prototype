@@ -1,11 +1,11 @@
 export type FlowItem = {
   id: string;
   origem: string;
-  destino?: string;
+  destino?: string | undefined;
   tamanho: string;
-  paginas?: number;
+  paginas?: number | undefined;
   status: "ok" | "erro" | "aviso";
-  detalhe?: string;
+  detalhe?: string | undefined;
 };
 
 export const PASTA_PADRAO = "C:\\Financeiro\\2026\\Entradas\\Lote-Setembro";
@@ -149,7 +149,7 @@ export const mesclagemGrupos: {
   competencia: string;
   arquivos: ArquivoMesclagem[];
   status: "ok" | "erro" | "aviso";
-  detalhe?: string;
+  detalhe?: string | undefined;
 }[] = [
   {
     id: "g1",
@@ -209,7 +209,7 @@ export type Holerite = {
   liquido: string;
   confianca: number;
   status: "ok" | "erro" | "aviso";
-  detalhe?: string;
+  detalhe?: string | undefined;
 };
 
 export const holerites: Holerite[] = [

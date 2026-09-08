@@ -50,6 +50,7 @@ function Organizador() {
       const para = copia.findIndex((p) => p.id === destinoId);
       if (de < 0 || para < 0) return atual;
       const [item] = copia.splice(de, 1);
+      if (!item) return atual;
       copia.splice(para, 0, item);
       return copia;
     });
