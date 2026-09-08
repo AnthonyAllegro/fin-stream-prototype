@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DesbloquearRouteImport } from './routes/desbloquear'
+import { Route as HoleritesRouteImport } from './routes/holerites'
+import { Route as MesclarRouteImport } from './routes/mesclar'
 import { Route as RemoverPrefixosRouteImport } from './routes/remover-prefixos'
 import { Route as RenomearPorValorRouteImport } from './routes/renomear-por-valor'
 import { Route as SequenciadorRouteImport } from './routes/sequenciador'
@@ -17,6 +20,21 @@ import { Route as SequenciadorRouteImport } from './routes/sequenciador'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesbloquearRoute = DesbloquearRouteImport.update({
+  id: '/desbloquear',
+  path: '/desbloquear',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoleritesRoute = HoleritesRouteImport.update({
+  id: '/holerites',
+  path: '/holerites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MesclarRoute = MesclarRouteImport.update({
+  id: '/mesclar',
+  path: '/mesclar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RemoverPrefixosRoute = RemoverPrefixosRouteImport.update({
@@ -37,12 +55,18 @@ const SequenciadorRoute = SequenciadorRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/desbloquear': typeof DesbloquearRoute
+  '/holerites': typeof HoleritesRoute
+  '/mesclar': typeof MesclarRoute
   '/remover-prefixos': typeof RemoverPrefixosRoute
   '/renomear-por-valor': typeof RenomearPorValorRoute
   '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/desbloquear': typeof DesbloquearRoute
+  '/holerites': typeof HoleritesRoute
+  '/mesclar': typeof MesclarRoute
   '/remover-prefixos': typeof RemoverPrefixosRoute
   '/renomear-por-valor': typeof RenomearPorValorRoute
   '/sequenciador': typeof SequenciadorRoute
@@ -50,18 +74,38 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/desbloquear': typeof DesbloquearRoute
+  '/holerites': typeof HoleritesRoute
+  '/mesclar': typeof MesclarRoute
   '/remover-prefixos': typeof RemoverPrefixosRoute
   '/renomear-por-valor': typeof RenomearPorValorRoute
   '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/remover-prefixos' | '/renomear-por-valor' | '/sequenciador'
+  fullPaths:
+    | '/'
+    | '/desbloquear'
+    | '/holerites'
+    | '/mesclar'
+    | '/remover-prefixos'
+    | '/renomear-por-valor'
+    | '/sequenciador'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/remover-prefixos' | '/renomear-por-valor' | '/sequenciador'
+  to:
+    | '/'
+    | '/desbloquear'
+    | '/holerites'
+    | '/mesclar'
+    | '/remover-prefixos'
+    | '/renomear-por-valor'
+    | '/sequenciador'
   id:
     | '__root__'
     | '/'
+    | '/desbloquear'
+    | '/holerites'
+    | '/mesclar'
     | '/remover-prefixos'
     | '/renomear-por-valor'
     | '/sequenciador'
@@ -69,6 +113,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DesbloquearRoute: typeof DesbloquearRoute
+  HoleritesRoute: typeof HoleritesRoute
+  MesclarRoute: typeof MesclarRoute
   RemoverPrefixosRoute: typeof RemoverPrefixosRoute
   RenomearPorValorRoute: typeof RenomearPorValorRoute
   SequenciadorRoute: typeof SequenciadorRoute
@@ -81,6 +128,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/desbloquear': {
+      id: '/desbloquear'
+      path: '/desbloquear'
+      fullPath: '/desbloquear'
+      preLoaderRoute: typeof DesbloquearRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/holerites': {
+      id: '/holerites'
+      path: '/holerites'
+      fullPath: '/holerites'
+      preLoaderRoute: typeof HoleritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mesclar': {
+      id: '/mesclar'
+      path: '/mesclar'
+      fullPath: '/mesclar'
+      preLoaderRoute: typeof MesclarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/remover-prefixos': {
@@ -109,6 +177,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DesbloquearRoute: DesbloquearRoute,
+  HoleritesRoute: HoleritesRoute,
+  MesclarRoute: MesclarRoute,
   RemoverPrefixosRoute: RemoverPrefixosRoute,
   RenomearPorValorRoute: RenomearPorValorRoute,
   SequenciadorRoute: SequenciadorRoute,
