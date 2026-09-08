@@ -10,33 +10,68 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RemoverPrefixosRouteImport } from './routes/remover-prefixos'
+import { Route as RenomearPorValorRouteImport } from './routes/renomear-por-valor'
+import { Route as SequenciadorRouteImport } from './routes/sequenciador'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RemoverPrefixosRoute = RemoverPrefixosRouteImport.update({
+  id: '/remover-prefixos',
+  path: '/remover-prefixos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RenomearPorValorRoute = RenomearPorValorRouteImport.update({
+  id: '/renomear-por-valor',
+  path: '/renomear-por-valor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SequenciadorRoute = SequenciadorRouteImport.update({
+  id: '/sequenciador',
+  path: '/sequenciador',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/remover-prefixos': typeof RemoverPrefixosRoute
+  '/renomear-por-valor': typeof RenomearPorValorRoute
+  '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/remover-prefixos': typeof RemoverPrefixosRoute
+  '/renomear-por-valor': typeof RenomearPorValorRoute
+  '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/remover-prefixos': typeof RemoverPrefixosRoute
+  '/renomear-por-valor': typeof RenomearPorValorRoute
+  '/sequenciador': typeof SequenciadorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/remover-prefixos' | '/renomear-por-valor' | '/sequenciador'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/remover-prefixos' | '/renomear-por-valor' | '/sequenciador'
+  id:
+    | '__root__'
+    | '/'
+    | '/remover-prefixos'
+    | '/renomear-por-valor'
+    | '/sequenciador'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RemoverPrefixosRoute: typeof RemoverPrefixosRoute
+  RenomearPorValorRoute: typeof RenomearPorValorRoute
+  SequenciadorRoute: typeof SequenciadorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +83,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/remover-prefixos': {
+      id: '/remover-prefixos'
+      path: '/remover-prefixos'
+      fullPath: '/remover-prefixos'
+      preLoaderRoute: typeof RemoverPrefixosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renomear-por-valor': {
+      id: '/renomear-por-valor'
+      path: '/renomear-por-valor'
+      fullPath: '/renomear-por-valor'
+      preLoaderRoute: typeof RenomearPorValorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sequenciador': {
+      id: '/sequenciador'
+      path: '/sequenciador'
+      fullPath: '/sequenciador'
+      preLoaderRoute: typeof SequenciadorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RemoverPrefixosRoute: RemoverPrefixosRoute,
+  RenomearPorValorRoute: RenomearPorValorRoute,
+  SequenciadorRoute: SequenciadorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
